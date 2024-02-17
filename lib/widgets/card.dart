@@ -9,36 +9,39 @@ class MyCard extends StatelessWidget {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Container(
-          //   color: Colors.white,
-          //   height: 100,
-          //   width: 100,
-          //   child: Image(
-          //     image: NetworkImage("https://picsum.photos/200/300"),
-          //   ),
-          // ),
           Container(
             color: Colors.white,
             height: 100,
             width: 100,
-            child: Image(image: AssetImage('image/laptop.jpg')),
+            child: const Image(image: AssetImage('image/laptop.jpg')),
           ),
           const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Farhan Ibrahim",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+              Row(
+                children: [
+                  Icon(Icons.account_circle, size: 30),
+                  Text(
+                    "Farhan Ibrahim",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                "Software Engineer",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: [
+                  Icon(Icons.work, size: 30),
+                  Text(
+                    "Software Engineer",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -49,60 +52,21 @@ class MyCard extends StatelessWidget {
     return MaterialApp(
       title: "My Profile",
       home: Scaffold(
+        appBar: AppBar(
+          title: const Text("My Profile"),
+        ),
         body: Container(
-          width: 400,
           color: Colors.grey[100],
           padding: const EdgeInsets.all(20),
           child: Container(
-            // height: 200,
+            height: 200,
             decoration: BoxDecoration(
               color: Colors.red[400],
               borderRadius: BorderRadius.circular(12),
             ),
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: Column(
-              children: [
-                card(),
-                card(),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // Container(
-                    //   color: Colors.white,
-                    //   height: 100,
-                    //   width: 100,
-                    //   child: Image(
-                    //     image: NetworkImage("https://picsum.photos/200/300"),
-                    //   ),
-                    // ),
-                    Container(
-                      color: Colors.white,
-                      height: 100,
-                      width: 100,
-                      child: Image(image: AssetImage('image/laptop.jpg')),
-                    ),
-                    const Column(
-                      children: [
-                        Text(
-                          "Farhan Ibrahim",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          "Software Engineer",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+              children: [card()],
             ),
           ),
         ),
