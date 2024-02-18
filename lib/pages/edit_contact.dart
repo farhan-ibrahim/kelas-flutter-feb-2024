@@ -2,27 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_app/model/contact.dart';
 import 'package:my_flutter_app/repository/contacts.dart';
 
-class AddContact extends StatefulWidget {
-  const AddContact({super.key});
+class EditContact extends StatefulWidget {
+  final Contact contact;
+  const EditContact({super.key, required this.contact});
 
   @override
-  State<AddContact> createState() => _AddContactState();
+  State<EditContact> createState() => _EditContactState();
 }
 
-class _AddContactState extends State<AddContact> {
+class _EditContactState extends State<EditContact> {
   final contactRepo = ContactRepository();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController nameCtrl = TextEditingController();
-  TextEditingController phoneCtrl = TextEditingController();
-  TextEditingController companyCtrl = TextEditingController();
-  TextEditingController positionCtrl = TextEditingController();
+  // get the info from Provider
 
   @override
   Widget build(BuildContext context) {
+    final selectedContact = widget.contact;
+
+    TextEditingController nameCtrl =
+        TextEditingController(text: widget.contact.name);
+    TextEditingController phoneCtrl =
+        TextEditingController(text: widget.contact.phone);
+    TextEditingController companyCtrl =
+        TextEditingController(text: widget.contact.company);
+    TextEditingController positionCtrl =
+        TextEditingController(text: widget.contact.position);
+
+    print("SELECTED ${selectedContact.name}");
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add new contact"),
+        title: const Text("Edit contact"),
         backgroundColor: Colors.orangeAccent,
       ),
       body: Form(
@@ -107,8 +118,9 @@ class _AddContactState extends State<AddContact> {
 
                   if (isValid) {
                     contactRepo
-                        .addNewContact(
+                        .updateContact(
                           Contact(
+                            id: widget.contact.id,
                             name: name,
                             position: position,
                             company: company,
@@ -116,6 +128,17 @@ class _AddContactState extends State<AddContact> {
                           ),
                         )
                         .then((_) => Navigator.pop(context));
+
+                    // contactRepo
+                    //     .addNewContact(
+                    //       Contact(
+                    //         name: name,
+                    //         position: position,
+                    //         company: company,
+                    //         phone: phone,
+                    //       ),
+                    //     )
+                    //     .then((_) => Navigator.pop(context));
                   }
 
                   // // Connect with firestore
@@ -133,7 +156,7 @@ class _AddContactState extends State<AddContact> {
                   //   "phone": phone
                   // });
                 },
-                child: const Text("Submit"),
+                child: const Text("Update"),
               )
             ],
           ),

@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Contact {
+  String? id;
   String name;
   String position;
   String company;
@@ -12,6 +15,7 @@ class Contact {
     required this.company,
     required this.phone,
     this.email,
+    this.id,
   });
 
   // Method
@@ -23,10 +27,22 @@ class Contact {
       "company": company,
       "phone": phone,
       // Email is optional
-      if (email != null) "email": email,
+      // if (email != null) "email": email,
     };
+  }
+
+  factory Contact.fromSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> doc) {
+    // print("ID ${doc.id}");
+    return Contact(
+      id: doc.id,
+      name: doc.data()["name"],
+      position: doc.data()["position"],
+      company: doc.data()["company"],
+      phone: doc.data()["phone"],
+    );
   }
 }
 
-// final contact1 = Contact(company: "A", name: "B", position: "C", phone: "D");
+final contact1 = Contact(company: "A", name: "B", position: "C", phone: "D");
 // Map<String, dynamic> contactMap = contact1.toMap();
