@@ -13,7 +13,7 @@ class MyList extends StatelessWidget {
             color: Colors.white,
             height: 100,
             width: 100,
-            child: Image(
+            child: const Image(
               image: NetworkImage("https://picsum.photos/200/300"),
             ),
           ),
@@ -22,7 +22,7 @@ class MyList extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.account_circle, size: 30),
+                  const Icon(Icons.account_circle, size: 30),
                   Text(
                     name,
                     style: const TextStyle(
@@ -33,10 +33,10 @@ class MyList extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 children: [
                   Icon(Icons.work, size: 30),
-                  const Text(
+                  Text(
                     "Software Engineer",
                     style: TextStyle(
                       color: Colors.white,
@@ -55,7 +55,7 @@ class MyList extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Students"),
+        title: const Text("Students"),
       ),
       backgroundColor: Colors.purple[300],
       body: SafeArea(

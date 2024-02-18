@@ -17,19 +17,19 @@ class _MyFormState extends State<MyForm> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Form"),
+        title: const Text("Form"),
       ),
       backgroundColor: Colors.purple[100],
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Center(
             child: Column(
               children: [
                 TextField(
                   controller: _weight,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Weight"),
                     border: OutlineInputBorder(),
                   ),
@@ -37,7 +37,7 @@ class _MyFormState extends State<MyForm> {
                 TextField(
                   controller: _height,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Height"),
                     border: OutlineInputBorder(),
                   ),
