@@ -66,9 +66,9 @@ class MyList extends StatelessWidget {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, "/form");
+          Navigator.pushNamed(context, "/add");
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
